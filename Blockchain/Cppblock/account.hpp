@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <string>
 
@@ -21,6 +22,14 @@ class Account
             }
         }
 
+        double getbalance()
+        {
+            return balance;
+        }
+        std::string getname()
+        {
+            return name;
+        }
         void Deposit(const double amount) 
         {
             if (amount <= 0) {
@@ -28,7 +37,7 @@ class Account
                 return;
             }
             balance += amount;
-            std::cout << "Amount " << amount << "credited to the account, current balance "<< balance << "\n";
+            std::cout << "Amount " << amount << " credited to the account, current balance "<< balance << "\n";
         }
 
         void Withdraw(const double amount)
