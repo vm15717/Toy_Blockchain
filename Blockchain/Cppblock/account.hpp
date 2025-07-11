@@ -21,6 +21,31 @@ class Account
             }
         }
 
+        void Deposit(const double amount) 
+        {
+            if (amount <= 0) {
+                std::cout << "Invalid deposit amount. Must be greater than 0.\n";
+                return;
+            }
+            balance += amount;
+            std::cout << "Amount " << amount << "credited to the account, current balance "<< balance << "\n";
+        }
+
+        void Withdraw(const double amount)
+        {
+            if (amount <= 0) {
+                std::cout << "Withdrawal amount must be positive.\n";
+                return;
+            }
+            if ((balance - amount) < 0)
+            {
+                std::cout << "Do not have sufficient balance!!!, current balance is " << balance << "\n";
+                return;
+            }
+            balance -= amount;
+            std::cout << "Amount "<< amount << " withdrawn, current balance is " << balance << "\n"; 
+        }
+
         friend std::ostream &operator << (std::ostream &out, const Account &account)
         {
             out << "Account Name: " << account.name << "\n";

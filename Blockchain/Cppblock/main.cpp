@@ -4,5 +4,7 @@
 int main() {
     Account acc("Alice", 1001, 500.0, "Savings", "USD");
     std::cout << acc;
+    acc.Withdraw(50);
+    std::cout << acc;
     return 0;
 }
