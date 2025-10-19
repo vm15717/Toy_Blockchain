@@ -26,20 +26,41 @@ class LinkedList{
     };
     void printlist()
     {
-        Node* temp = head;
-        while (temp)
+        if (length == 0)
         {
-            std::cout << temp->value << std::endl;
-            temp = temp->next;
+            std::cout << "The list is empty!!" << std::endl;
+        }
+        else
+        {
+            Node* temp = head;
+            while (temp)
+            {
+                std::cout << temp->value << std::endl;
+                temp = temp->next;
+            }
         }
     }
     void getHead()
     {
-        std::cout << "Head: " << this->head->value << std::endl;
+        if (head)
+        {
+            std::cout << "Head: " << this->head->value << std::endl;
+        }
+        else
+        {
+            std::cout << "The list is empty!!" << std::endl;
+        }
     }
     void getTail()
     {
-        std::cout << "Tail: " << this->tail->value << std::endl;
+        if (tail)
+        {
+            std::cout << "Tail: " << this->tail->value << std::endl;
+        }
+        else
+        {
+            std::cout << "The list is empty!!" << std::endl; 
+        }
     }
     void getLength()
     {
@@ -60,10 +81,35 @@ class LinkedList{
         }
         this->length = this->length + 1;
     }
-
+    void deleteLast()
+    {
+        Node* temp = head;
+        if (length == 0)
+        {
+            std::cout << "The list is empty!!" << std::endl;
+        }
+        else if (length == 1)
+        {
+            delete head;
+            head = nullptr;
+            tail = head;
+            length = length - 1;
+        }
+        else
+        {
+            while (temp->next != tail)
+            {
+                temp = temp->next;
+            }
+            delete tail;
+            tail = temp;
+            tail->next = nullptr;
+            this->length = this->length - 1;
+        }
+    }
     ~LinkedList()
     {
-        Node *temp = head;
+        Node* temp = head;
         while (head)
         {
             head = head->next;
@@ -78,6 +124,13 @@ int main(){
     LinkedList* LL1 = new LinkedList(4);
     LL1->append(5);
     LL1->append(6);
+    LL1->printlist();
+    LL1->getHead();
+    LL1->getTail();
+    LL1->getLength();
+    LL1->deleteLast();
+    LL1->deleteLast();
+    LL1->deleteLast();
     LL1->printlist();
     LL1->getHead();
     LL1->getTail();
