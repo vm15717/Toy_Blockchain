@@ -92,7 +92,7 @@ class LinkedList{
         {
             delete head;
             head = nullptr;
-            tail = head;
+            tail = nullptr;
             length = length - 1;
         }
         else
